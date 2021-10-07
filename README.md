@@ -1,4 +1,4 @@
-# projects
+# Projects
 
 Interpreter - simple BASIC interpreter in C++
 
