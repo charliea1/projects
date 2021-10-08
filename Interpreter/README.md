@@ -17,7 +17,7 @@ Running:
 
 -sample input file "sample.txt" included for testing
 
--".txt" input files must be in "src" directory, when prompted must be specified as "src/<filename>"
+-".txt" input files must be in "src" directory, when prompted must be specified as "src/-filename-
 
 -output ofstream is cout by default;
 

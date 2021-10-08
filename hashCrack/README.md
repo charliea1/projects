@@ -6,7 +6,7 @@ Run from "hashes.txt" as input with $python crack.py
 
 -"hashes.txt" loaded with a few hashes for a quick test
 
-Convert file of passwords to hashes and add to "hashes.txt" with $python addHash.py <filename>
+Convert file of passwords to hashes and add to "hashes.txt" with $python addHash.py -filename-
 
 Clear hash file with $python addHash.py clear
 

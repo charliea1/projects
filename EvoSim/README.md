@@ -1,7 +1,7 @@
 Evolution Simulator:
 
 compiling: "make" to compile and "make clean" to clean bin directory (clean does not change executable)
-running: $./simulator runs the simulation as is; $./simulator <name> creates unique output file "SIM-name"
+running: $./simulator runs the simulation as is; $./simulator -name- creates unique output file "SIM-name"
 
 This simulator works with "entities" that move on a simple 2D board. Entities move randomly, searching for food. If they find a specified amount of food, they will reproduce with a specified chance of mutation. If 2+ entities find food at the same time, all but one will yield, or some may "fight" for the food. Entities are helped/limited by these stats:
 
