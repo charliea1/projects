@@ -1,9 +1,9 @@
 /*SIMULATOR:
-Using entities and gamestate, runs simulation with specified variables
+Using entities and Environment, runs simulation with specified variables
 such as board size, starting stats, number of entities, number of iterations, etc.
 Results output to text file specified by first command line argument
 */
-#include "../lib/GameState.h"
+#include "../lib/Environment.h"
 #include <vector>
 #include <string>
 #include <fstream>
@@ -14,7 +14,7 @@ Results output to text file specified by first command line argument
 using namespace std;
 
 void runSim(ofstream &out, int scarcity, int board_size, int num_entities, int num_iterations, int num_generations);
-void runGen(GameState *game, int iterations, ostream &outf);
+void runGen(Environment *game, int iterations, ostream &outf);
 
 int main(int argc, char *argv[])
 {
@@ -38,9 +38,9 @@ int main(int argc, char *argv[])
 
 void runSim(ofstream &out, int scarcity, int board_size, int num_entities, int num_iterations, int num_generations)
 {
-    //initialize GameState
-    GameState *game;
-    game = new GameState(scarcity, board_size, num_entities);
+    //initialize Environment
+    Environment *game;
+    game = new Environment(scarcity, board_size, num_entities);
 
     //make board
     game->makeBoard();
@@ -48,7 +48,7 @@ void runSim(ofstream &out, int scarcity, int board_size, int num_entities, int n
     //initialize entities
     for (int i = 0; i < num_entities; i++)
     {
-        //create entity and add to GameState
+        //create entity and add to Environment
         Entity *ent;
         ent = new Entity();
         game->addEntity(ent);
@@ -66,7 +66,7 @@ void runSim(ofstream &out, int scarcity, int board_size, int num_entities, int n
     }
 }
 
-void runGen(GameState *game, int iterations, ostream &outf)
+void runGen(Environment *game, int iterations, ostream &outf)
 {
     for (int i = 0; i < iterations; i++)
     {

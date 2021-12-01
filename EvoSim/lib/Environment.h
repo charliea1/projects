@@ -1,4 +1,4 @@
-//GameState
+//Environment
 /*
 Goal of this class is to facilitate interactions between:
 -entities and entities
@@ -19,11 +19,11 @@ struct spot
     int food;
 };
 
-class GameState
+class Environment
 {
 public:
-    GameState(int scarcity, int board_size, int num_entities);
-    ~GameState();
+    Environment(int scarcity, int board_size, int num_entities);
+    ~Environment();
 
     //generate size x size board of spots
     void makeBoard();

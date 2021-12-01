@@ -1,11 +1,11 @@
-#include "../lib/GameState.h"
+#include "../lib/Environment.h"
 #include <iostream>
 
-GameState::GameState(int scarcity, int board_size, int num_entities) : m_scarcity(scarcity),
-                                                                       m_board_size(board_size), m_num_entities(num_entities) {}
+Environment::Environment(int scarcity, int board_size, int num_entities) : m_scarcity(scarcity),
+                                                                           m_board_size(board_size), m_num_entities(num_entities) {}
 
 //create size x size board of spots
-void GameState::makeBoard()
+void Environment::makeBoard()
 {
     //make board array of spots
     board = new spot *[m_board_size * m_board_size];
@@ -24,7 +24,7 @@ void GameState::makeBoard()
     }
 }
 
-void GameState::reproduceEntities()
+void Environment::reproduceEntities()
 {
     //iterate through entities--if reproduce = true, reproduce with chance to mutate
     int size = this->entities.size();
@@ -53,12 +53,12 @@ void GameState::reproduceEntities()
     }
 }
 
-void GameState::addEntity(Entity *ent)
+void Environment::addEntity(Entity *ent)
 {
     entities.push_back(ent);
 }
 
-void GameState::linkToBoard(Entity *ent)
+void Environment::linkToBoard(Entity *ent)
 {
     //find occupied spot
     int pos = ent->get("pos");
@@ -83,7 +83,7 @@ void GameState::linkToBoard(Entity *ent)
     //and its interaction is ready for processing
 }
 
-void GameState::ProcessTurn()
+void Environment::ProcessTurn()
 {
     //20 "ticks" per turn
     int counter = 0;
@@ -117,7 +117,7 @@ void GameState::ProcessTurn()
     reproduceEntities();
 }
 
-void GameState::processConfrontations()
+void Environment::processConfrontations()
 {
     //iterate through occupied food spots
     for (int i = 0; i < occupied.size(); i++)
@@ -146,14 +146,14 @@ void GameState::processConfrontations()
         occupied.at(i)->food = 0;
     }
 
-    //clear GameState's occupied vector
+    //clear Environment's occupied vector
     for (int i = 0; i < occupied.size(); i++)
     {
         occupied.pop_back();
     }
 }
 
-Entity *GameState::confrontation(vector<Entity *> ents)
+Entity *Environment::confrontation(vector<Entity *> ents)
 {
     //for entity to yield, it must have 2 less aggression than another
     //chance of winning fight is allotted evenly + (10% per 1 difference in attack for highest attack value)
@@ -264,7 +264,7 @@ Entity *GameState::confrontation(vector<Entity *> ents)
 }
 
 //eventually implement with speed mechanic--right now each entitity moves one tile a time
-void GameState::randSearch(Entity *ent)
+void Environment::randSearch(Entity *ent)
 {
     //move ent random direction
     ent->randMove(m_board_size);
@@ -280,7 +280,7 @@ void GameState::randSearch(Entity *ent)
     }
 }
 
-void GameState::displayGen(ostream &outf)
+void Environment::displayGen(ostream &outf)
 {
     outf << "***************************************" << endl;
     outf << "***************************************" << endl;
@@ -293,7 +293,7 @@ void GameState::displayGen(ostream &outf)
     outf << "***************************************" << endl;
 }
 
-GameState::~GameState()
+Environment::~Environment()
 {
     for (int i = 0; i < m_board_size; i++)
     {
