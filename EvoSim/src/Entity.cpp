@@ -339,3 +339,5 @@ void Entity::printStats(ostream &outf)
 {
     outf << "ATT: " << m_att << " | DEF: " << m_def << " | AGG: " << m_agg << endl;
 }
+
+Entity::~Entity() {}

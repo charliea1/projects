@@ -18,4 +18,5 @@ bin/.dirstamp:
 .PHONY: clean
 clean:
 	rm -rf bin
+	rm simulator
 	

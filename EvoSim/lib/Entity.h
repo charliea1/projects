@@ -7,6 +7,7 @@ public:
     Entity &operator=(const Entity &);
 
     Entity();
+    ~Entity();
 
     //reproduce with variance/100 chance of mutation
     void reproduce(int variance);
